@@ -13,20 +13,20 @@ global $product;
   $track = $xml->addChild('MerchantItem');
   $track->addChild('merchantItemId', $product->get_id());
   $track->addChild('merchantItemCategoryId', '1');
-  $track->addChild('brand', '<![CDATA['.get_post_meta($product->get_id(), 'brand', true).']]>');
-  $track->addChild('model', '<![CDATA['.get_post_meta($product->get_id(), 'model', true).']]>');
-  $track->addChild('itemTitle', '<![CDATA['.$product->get_name().']]>');
-  $track->addChild('merchantItemField', '<![CDATA['.get_post_meta($product->get_id(), 'offer', true).']]>');
-  $track->addChild('itemUrl', '<![CDATA['.get_permalink( $product->get_id()).']]>');
-  $track->addChild('priceEft', '<![CDATA['.$product->get_price().']]>');
-  $track->addChild('pricePlusTax', '<![CDATA['.$product->get_price().']]>');
-  $track->addChild('itemUrlMobile', '<![CDATA['.get_permalink( $product->get_id()).']]>');
-  $track->addChild('itemImageUrl', '<![CDATA['.get_the_post_thumbnail_url( $product->get_id(), 'full' ).']]>');
+  $track->addChild('brand', get_post_meta($product->get_id(), 'brand', true));
+  $track->addChild('model', get_post_meta($product->get_id(), 'model', true));
+  $track->addChild('itemTitle', $product->get_name());
+  $track->addChild('merchantItemField', get_post_meta($product->get_id(), 'offer', true));
+  $track->addChild('itemUrl', get_permalink( $product->get_id()));
+  $track->addChild('priceEft', $product->get_price());
+  $track->addChild('pricePlusTax', $product->get_price());
+  $track->addChild('itemUrlMobile', get_permalink( $product->get_id()));
+  $track->addChild('itemImageUrl', get_the_post_thumbnail_url( $product->get_id(), 'full' ));
   $track->addChild('shippingFee', get_post_meta($product->get_id(), 'shipping-cost', true));
   $track->addChild('stockStatus', '1');
-  $track->addChild('stockDetail', '<![CDATA['.$product->get_stock_quantity().']]>');
+  $track->addChild('stockDetail', $product->get_stock_quantity());
   $track->addChild('shippingDay', get_post_meta($product->get_id(), 'shipping-day', true));
-  $track->addChild('shippingDetail', '<![CDATA['.get_post_meta($product->get_id(), 'cargo-detail', true).']]>');
+  $track->addChild('shippingDetail', get_post_meta($product->get_id(), 'cargo-detail', true));
   $track->addChild('typeOfWarranty', '1');
   $track->addChild('warrantyPeriod', get_post_meta($product->get_id(), 'warranty-period', true));
 
@@ -37,12 +37,12 @@ global $product;
   //specs
   $specs = $track->addChild('specs');
   $spec = $specs->addChild('spec');
-  $spec->addChild('description', '<![CDATA['.'Ürün Boyu'.']]>');
-  $spec->addChild('values', '<![CDATA['.get_post_meta($product->get_id(), 'product-size', true).']]>');
+  $spec->addChild('description', 'Ürün Boyu');
+  $spec->addChild('values', get_post_meta($product->get_id(), 'product-size', true));
 
   $spec = $specs->addChild('spec');
-  $spec->addChild('description', '<![CDATA['.'Ürün Genişliği'.']]>');
-  $spec->addChild('values', '<![CDATA['.get_post_meta($product->get_id(), 'product-width', true).']]>');
+  $spec->addChild('description', 'Ürün Genişliği');
+  $spec->addChild('values', get_post_meta($product->get_id(), 'product-width', true));
   //specs end
 
 
